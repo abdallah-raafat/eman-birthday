@@ -1,0 +1,328 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Happy Birthday Eman ❤️ | كل سنة وأنتي قلبي</title>
+
+  <!-- Mobile & iOS Optimization -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#08020e" />
+
+  <!-- SEO & Social Sharing -->
+  <meta name="description" content="موقع عيد ميلاد إيمان من عبدالله - 1 أكتوبر ❤️ كل سنة وأنتي قلبي وكل سنة وأنتي جنبي." />
+  <meta property="og:title" content="Happy Birthday Eman ❤️ | From Abdallah" />
+  <meta property="og:description" content="كل سنة وأنت قلبي، كل سنة وأنت جنبي.. مفاجأة عيد ميلاد إيمان من عبدالله ❤️" />
+  <meta property="og:image" content="our-love.jpg" />
+
+  <!-- Google Fonts: Arabic & English Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Dancing+Script:wght@700&family=Outfit:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons & Confetti CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Canvas Background for Starry Night & Floating Heart Particles -->
+  <canvas id="sparkleCanvas"></canvas>
+
+  <!-- Ambient Glow Blobs -->
+  <div class="ambient-glow glow-pink"></div>
+  <div class="ambient-glow glow-gold"></div>
+  <div class="ambient-glow glow-purple"></div>
+
+  <!-- Background Music Element -->
+  <audio id="bgMusic" src="esseily.mp3" loop preload="auto"></audio>
+
+  <!-- Floating Audio Player Bar -->
+  <div class="audio-floating-pill" id="audioPill">
+    <button id="audioToggleBtn" class="audio-toggle-btn" aria-label="تشغيل أو إيقاف الموسيقى">
+      <div class="equalizer-bars">
+        <span class="bar bar-1"></span>
+        <span class="bar bar-2"></span>
+        <span class="bar bar-3"></span>
+        <span class="bar bar-4"></span>
+      </div>
+      <span class="audio-pill-text" id="audioPillText">محمود العسيلي 🎵</span>
+    </button>
+  </div>
+
+  <!-- Romantic Autoplay Unlock Modal (If Browser Blocks Audio Initially) -->
+  <div id="unlockOverlay" class="unlock-overlay">
+    <div class="unlock-card glass-panel">
+      <div class="unlock-gift-icon">🎁</div>
+      <h2 class="unlock-title">إلى إيمان حبيبتي ❤️</h2>
+      <p class="unlock-subtitle">جهزتلك مفاجأة خاصة جداً لعيد ميلادك في أول أكتوبر..</p>
+      <button id="unlockBtn" class="btn btn-primary unlock-pulse-btn">
+        <span>افتحي المفاجأة والموسيقى 🎶✨</span>
+      </button>
+      <span class="unlock-note">اضغطي هنا عشان الأغنية تبدأ وتعيشي الأجواء 💕</span>
+    </div>
+  </div>
+
+  <!-- Main Website Container -->
+  <div class="main-container">
+    
+    <!-- Top Celebration Badge -->
+    <header class="hero-header">
+      <div class="date-badge">
+        <i data-lucide="sparkles" class="icon-sparkle"></i>
+        <span>1ST OF OCTOBER • 1 أكتوبر</span>
+        <i data-lucide="sparkles" class="icon-sparkle"></i>
+      </div>
+      
+      <h1 class="hero-title">
+        كل سنة وأنتي <span class="highlight-eman">قلبي</span> ❤️
+      </h1>
+      
+      <p class="hero-subtitle">
+        Happy Birthday To The Love Of My Life, <strong>Eman</strong> ✨
+      </p>
+
+      <div class="birthday-tagline">
+        من <strong>عبدالله</strong> إلى <strong>إيمان</strong>: كل سنة وأنتي كل حاجة حلوة في دنيتي..
+      </div>
+    </header>
+
+    <!-- Polaroid Photo Frame: Our Special Love Photo -->
+    <section class="photo-section">
+      <div class="polaroid-wrapper" id="polaroidCard">
+        <div class="polaroid-pin">📌</div>
+        <div class="polaroid-frame glass-panel">
+          <div class="photo-container">
+            <img src="our-love.jpg" alt="Abdallah & Eman - Holding Hands" class="romantic-photo" id="romanticPhoto" />
+            <div class="photo-glow-border"></div>
+            <div class="heart-badge-overlay">
+              <span>أيدينا سوا دايماً ❤️</span>
+            </div>
+          </div>
+          <div class="polaroid-caption">
+            <p class="caption-arabic">"إيدك في إيدي.. دي أحلى بداية لكل سنة جديدة في حياتنا"</p>
+            <p class="caption-sub">Forever holding on to you • 1st of October</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Birthday Cake & Blow the Candles -->
+    <section class="cake-section">
+      <div class="cake-card glass-panel">
+        <div class="section-tag">
+          <i data-lucide="cake" class="tag-icon"></i>
+          <span>تورتة عيد ميلادك 🎂</span>
+        </div>
+
+        <h2 class="cake-title">يلا اطفي الشمع واتمني أمنية! 🕯️</h2>
+        <p class="cake-desc">غمضي عينيكي، اتمني أحلى أمنية في سرك، ودوسي على الزرار عشان تطفي الشمع وتولعي أفراح السنة الجديدة!</p>
+
+        <!-- SVG Interactive Birthday Cake -->
+        <div class="cake-stage" id="cakeStage">
+          <svg viewBox="0 0 300 240" class="birthday-cake-svg">
+            <defs>
+              <linearGradient id="frostingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ff758c" />
+                <stop offset="100%" stop-color="#ff2a6d" />
+              </linearGradient>
+              <linearGradient id="cakeBaseGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#3d122e" />
+                <stop offset="100%" stop-color="#24071b" />
+              </linearGradient>
+              <radialGradient id="flameGrad" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#ffffff" />
+                <stop offset="30%" stop-color="#ffd166" />
+                <stop offset="70%" stop-color="#ff5e00" />
+                <stop offset="100%" stop-color="transparent" />
+              </radialGradient>
+            </defs>
+
+            <!-- Plate -->
+            <ellipse cx="150" cy="210" rx="120" ry="18" fill="rgba(255, 209, 102, 0.3)" stroke="#ffd166" stroke-width="2" />
+
+            <!-- Bottom Tier -->
+            <rect x="50" y="145" width="200" height="55" rx="16" fill="url(#cakeBaseGrad)" stroke="rgba(255, 117, 140, 0.4)" stroke-width="2" />
+            <path d="M50 160 Q65 175 80 160 Q95 175 110 160 Q125 175 140 160 Q155 175 170 160 Q185 175 200 160 Q215 175 230 160 Q245 175 250 160 L250 145 L50 145 Z" fill="url(#frostingGrad)" />
+
+            <!-- Top Tier -->
+            <rect x="85" y="95" width="130" height="50" rx="12" fill="url(#cakeBaseGrad)" stroke="rgba(255, 117, 140, 0.4)" stroke-width="2" />
+            <path d="M85 108 Q100 120 115 108 Q130 120 145 108 Q160 120 175 108 Q190 120 205 108 Q210 114 215 108 L215 95 L85 95 Z" fill="url(#frostingGrad)" />
+
+            <!-- Eman Name on Cake -->
+            <text x="150" y="130" text-anchor="middle" fill="#ffffff" font-family="'Cairo', sans-serif" font-weight="900" font-size="16" letter-spacing="1">EMAN ❤️</text>
+
+            <!-- Candles (3 Romantic Candles) -->
+            <!-- Left Candle -->
+            <rect x="110" y="60" width="8" height="35" rx="3" fill="#ffd166" />
+            <line x1="114" y1="60" x2="114" y2="52" stroke="#666" stroke-width="2" />
+            <g class="candle-flame flame-1" id="flame1">
+              <ellipse cx="114" cy="44" rx="6" ry="10" fill="url(#flameGrad)" />
+            </g>
+
+            <!-- Center Big Candle -->
+            <rect x="146" y="50" width="9" height="45" rx="3" fill="#ff758c" />
+            <line x1="150.5" y1="50" x2="150.5" y2="40" stroke="#666" stroke-width="2" />
+            <g class="candle-flame flame-2" id="flame2">
+              <ellipse cx="150.5" cy="30" rx="8" ry="13" fill="url(#flameGrad)" />
+            </g>
+
+            <!-- Right Candle -->
+            <rect x="182" y="60" width="8" height="35" rx="3" fill="#ffd166" />
+            <line x1="186" y1="60" x2="186" y2="52" stroke="#666" stroke-width="2" />
+            <g class="candle-flame flame-3" id="flame3">
+              <ellipse cx="186" cy="44" rx="6" ry="10" fill="url(#flameGrad)" />
+            </g>
+          </svg>
+        </div>
+
+        <button id="blowCandlesBtn" class="btn btn-cake-blow">
+          <i data-lucide="wind" class="btn-icon"></i>
+          <span id="blowBtnText">اطفي الشمع واتمني أمنية 🕯️💨</span>
+        </button>
+
+        <div id="wishRevealCard" class="wish-reveal-card">
+          <div class="wish-icon">💖</div>
+          <h3 class="wish-title">أمنية عبدالله ليكي:</h3>
+          <p class="wish-text">
+            "أمنيتي ليكي إنك تفضلي في حضن قلبي كل سنة وكل ثانية.. تبتسمي دايماً وماتغيبيش عن عيني أبداً.. وأنا هفضل جنبك أحققلك كل أحلامك ومسؤول عن ضحكتك وسعادتك لآخر يوم في عمري ❤️"
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Flirty Love Meters & Secret Admiration Cards -->
+    <section class="meters-section">
+      <div class="meters-card glass-panel">
+        <div class="section-tag">
+          <i data-lucide="heart-pulse" class="tag-icon"></i>
+          <span>إحصائيات إيمان في قلبي 📊❤️</span>
+        </div>
+
+        <h2 class="section-heading">مؤشرات قلب عبدالله في أول أكتوبر:</h2>
+
+        <div class="meters-grid">
+          <!-- Meter 1: Beauty -->
+          <div class="meter-item">
+            <div class="meter-header">
+              <span class="meter-name">نسبة الحلاوة والرقة 🌸</span>
+              <span class="meter-score">1000% (Illegal)</span>
+            </div>
+            <div class="meter-bar-track">
+              <div class="meter-bar-fill fill-pink" style="width: 100%;"></div>
+            </div>
+            <span class="meter-comment">تعديتي كل مقاييس الجمال في العالم!</span>
+          </div>
+
+          <!-- Meter 2: Occupation -->
+          <div class="meter-item">
+            <div class="meter-header">
+              <span class="meter-name">مساحة إيمان في قلبي 🏰</span>
+              <span class="meter-score">100.0%</span>
+            </div>
+            <div class="meter-bar-track">
+              <div class="meter-bar-fill fill-red" style="width: 100%;"></div>
+            </div>
+            <span class="meter-comment">مستولية على كل غرف وشرايين قلبي بالكامل ❤️</span>
+          </div>
+
+          <!-- Meter 3: Heartbeat -->
+          <div class="meter-item">
+            <div class="meter-header">
+              <span class="meter-name">سرعة نبضات قلبي لما بتبصيلي 💓</span>
+              <span class="meter-score">195 BPM!</span>
+            </div>
+            <div class="meter-bar-track">
+              <div class="meter-bar-fill fill-gold" style="width: 100%;"></div>
+            </div>
+            <span class="meter-comment">خفقان شديد بيحصل من غير ما أتحكم فيه 🙈</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive "Click to See What You Do to Me" Flirty Buttons -->
+    <section class="flirty-triggers-section">
+      <div class="flirty-card glass-panel">
+        <div class="section-tag">
+          <i data-lucide="sparkles" class="tag-icon"></i>
+          <span>حركات إيمان اللي بتجنني 😉</span>
+        </div>
+
+        <h2 class="section-heading">اضغطي وشوفي بتعملي فيا إيه:</h2>
+
+        <div class="flirty-buttons-row">
+          <button class="btn btn-flirty" data-quote="لما بتبتسميلي، بنسى كل التعب وبحس إن الدنيا كلها ضحكتلي من أول وجديد! 💕">
+            <span>لما تبتسمي 😊</span>
+          </button>
+          <button class="btn btn-flirty" data-quote="لما بتنادي اسمي بصوتك، قلبي هو اللي بيرد عليكي قبل لساني! ❤️">
+            <span>لما تنادي 'عبدالله' 🗣️</span>
+          </button>
+          <button class="btn btn-flirty" data-quote="مسكة إيدك دي بتخليني أحس إني ملكت الدنيا ومفيش أي حاجة تقدر تهزني! 👫">
+            <span>لما تمسكي إيدي 🤝</span>
+          </button>
+          <button class="btn btn-flirty" data-quote="نظرة واحدة في عينيكي كفيلة تخليني أضيع وأسرح في جمالك لساعات! ✨">
+            <span>لما تبصيلي في عيني 👀</span>
+          </button>
+        </div>
+
+        <div id="flirtyQuoteBox" class="flirty-quote-box">
+          <p id="flirtyQuoteText">اضغطي على أي واحدة فوق وشوفي قلبي هيقولك إيه.. 💕</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Love Letter Modal / Card from Abdallah -->
+    <section class="letter-section">
+      <div class="letter-card glass-panel">
+        <div class="wax-seal-badge">
+          <span>100% EMAN</span>
+        </div>
+
+        <h3 class="letter-salutation">حبيبتي ونور عيني إيمان،</h3>
+
+        <div class="letter-content">
+          <p>
+            النهارده مش مجرد يوم عادي.. النهارده أول أكتوبر، اليوم اللي اتولدت فيه أحلى نعمة دخلت حياتي، اليوم اللي غير مفهوم الفرحة في قلبي.
+          </p>
+          <p>
+            عايز أقولك في عيد ميلادك إني محظوظ بيكي، وممتن لكل ثانية بتعدي وأنتي معايا، لكل ضحكة بتطلع من قلبك، ولكل مرة إيدك بتلمس إيدي وبتحسسني بالأمان والحب.
+          </p>
+          <p class="highlighted-quote">
+            "كل سنة وأنت قلبي، كل سنة وأنت جنبي.. كل سنة وأنت طيب، كل سنة مني قريب" 🎶
+          </p>
+          <p>
+            وعد مني ليكي في أول أكتوبر: إني هفضل دايمًا السند اللي تتكئي عليه، والأمان اللي تلجأي له، والحبيب اللي يحبك أكتر مع كل طلوع شمس.. كل سنة وأنتي في قلبي، وكل سنة وأنتي ملكتي الوحيدة ❤️
+          </p>
+          <div class="letter-signature">
+            <span>بحبك للأبد،</span>
+            <span class="signature-name">عبدالله ✍️</span>
+          </div>
+        </div>
+
+        <div class="letter-actions">
+          <button id="rainHeartsBtn" class="btn btn-primary">
+            <i data-lucide="heart" class="btn-icon"></i>
+            <span>امطري قلوب وحب يا إيمان! 💖</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="birthday-footer">
+      <p>
+        Made with endless love by <strong>Abdallah</strong> for <strong>Eman</strong> • October 1st, 2026 ❤️
+      </p>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
