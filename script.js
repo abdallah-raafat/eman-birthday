@@ -293,36 +293,42 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // --------------------------------------------------------------------------
-  // 5. Celebration Action Buttons (Joy & Love Barrage)
+  // 5. "بحبك أوي" Romantic Heartfelt Animation Trigger
   // --------------------------------------------------------------------------
-  const cheerJoyBtn = document.getElementById('cheerJoyBtn');
-  if (cheerJoyBtn) {
-    cheerJoyBtn.addEventListener('click', () => {
-      launchConfettiCannon(150);
-      setTimeout(() => launchConfettiCannon(100), 350);
-      setTimeout(() => launchConfettiCannon(80), 700);
+  const loveYouBtn = document.getElementById('loveYouBtn');
+  if (loveYouBtn) {
+    loveYouBtn.addEventListener('click', (e) => {
+      // Grand celebratory fireworks & romantic confetti showers
+      launchConfettiCannon(160);
+      setTimeout(() => launchConfettiCannon(110), 320);
+      setTimeout(() => launchConfettiCannon(80), 650);
 
-      // Spawn a wave of cheerful balloons
-      for (let i = 0; i < 5; i++) {
-        setTimeout(createFloatingBalloon, i * 180);
+      // Wave of cheerful floating balloons
+      for (let i = 0; i < 6; i++) {
+        setTimeout(createFloatingBalloon, i * 160);
       }
 
+      // Celebratory chime
       playCelebrationChime();
-    });
-  }
 
-  const rainHeartsBtn = document.getElementById('rainHeartsBtn');
-  if (rainHeartsBtn) {
-    rainHeartsBtn.addEventListener('click', () => {
-      launchConfettiCannon(130);
-      setTimeout(() => launchConfettiCannon(90), 500);
-
-      // Spawn extra balloons
-      for (let i = 0; i < 3; i++) {
-        setTimeout(createFloatingBalloon, i * 200);
+      // Tactile haptic if supported
+      if (typeof navigator.vibrate === 'function') {
+        navigator.vibrate([60, 50, 100]);
       }
 
-      playCelebrationChime();
+      // Heart burst right at the button center
+      if (typeof confetti === 'function') {
+        const rect = loveYouBtn.getBoundingClientRect();
+        confetti({
+          particleCount: 30,
+          spread: 70,
+          origin: {
+            x: (rect.left + rect.width / 2) / window.innerWidth,
+            y: (rect.top + rect.height / 2) / window.innerHeight
+          },
+          colors: ['#38bdf8', '#7dd3fc', '#ffffff', '#ffd166', '#bae6fd']
+        });
+      }
     });
   }
 

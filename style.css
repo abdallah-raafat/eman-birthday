@@ -1058,7 +1058,58 @@ html, body {
 .letter-actions {
   display: flex;
   justify-content: center;
-  padding-top: 0.4rem;
+  padding-top: 0.6rem;
+  width: 100%;
+}
+
+.btn-love-you {
+  background: linear-gradient(135deg, #0284c7 0%, #38bdf8 50%, #7dd3fc 100%);
+  color: #030d1c;
+  font-size: 1.25rem;
+  font-weight: 900;
+  padding: 0.85rem 2.2rem;
+  border-radius: 9999px;
+  box-shadow: 0 6px 28px rgba(56, 189, 248, 0.55),
+              0 0 20px rgba(125, 211, 252, 0.4);
+  border: 1.5px solid rgba(255, 255, 255, 0.65);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  letter-spacing: 0.5px;
+  transition: var(--transition-smooth);
+  animation: pulseLoveBtn 2.2s infinite ease-in-out;
+  touch-action: manipulation;
+}
+
+.btn-love-you:hover, .btn-love-you:active {
+  transform: scale(1.05);
+  box-shadow: 0 8px 36px rgba(56, 189, 248, 0.8),
+              0 0 30px rgba(186, 230, 253, 0.65);
+}
+
+@keyframes pulseLoveBtn {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 6px 28px rgba(56, 189, 248, 0.55);
+  }
+  50% {
+    transform: scale(1.035);
+    box-shadow: 0 8px 38px rgba(125, 211, 252, 0.85);
+  }
+}
+
+.heart-pulse-icon {
+  font-size: 1.25rem;
+  display: inline-block;
+  animation: heartBeat 1.4s infinite ease-in-out;
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.22); }
+  40% { transform: scale(1); }
+  60% { transform: scale(1.15); }
 }
 
 /* --------------------------------------------------------------------------
